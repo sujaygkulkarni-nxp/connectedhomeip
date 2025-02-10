@@ -37,6 +37,8 @@ CHIP_ERROR DRBG_get_bytes(uint8_t * out_buffer, const size_t out_length)
     VerifyOrReturnError(out_buffer != nullptr, CHIP_ERROR_INVALID_ARGUMENT);
     VerifyOrReturnError(out_length > 0, CHIP_ERROR_INVALID_ARGUMENT);
 
+    ChipLogDetail(Crypto, "se05x::Random number generation using se05x");
+
     VerifyOrReturnError(se05x_sessionOpen() == CHIP_NO_ERROR, CHIP_ERROR_INTERNAL);
 
     status = sss_rng_context_init(&ctx_rng, &gex_sss_chip_ctx.session /* Session */);
